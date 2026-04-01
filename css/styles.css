@@ -1,0 +1,197 @@
+/* ===== Custom Styles for Picki Macarons ===== */
+
+/* Editorial ambient shadow */
+.editorial-shadow {
+  box-shadow: 0 20px 40px rgba(28, 28, 25, 0.06);
+}
+
+/* Material Symbols baseline */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Accordion marker removal */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary {
+  list-style: none;
+}
+details[open] summary .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Scroll-triggered Animations ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children delay */
+.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+
+/* ===== Header entrance ===== */
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+.animate-header {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+/* ===== Hero text entrance ===== */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-hero-text {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+.animate-hero-image {
+  animation: fadeInScale 0.8s 0.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* ===== Product card hover ===== */
+.product-card img {
+  transition: transform 0.5s ease;
+}
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ===== Button hover micro-interaction ===== */
+.btn-animate {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-animate:hover {
+  transform: scale(1.05);
+}
+.btn-animate:active {
+  transform: scale(0.98);
+}
+
+/* ===== Contact Form Styles ===== */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d4c2c2;
+  background: #f7f3ef;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1c1c19;
+}
+.input-field:focus {
+  background: #ffffff;
+  border-color: #7b5455;
+  box-shadow: 0 0 0 2px rgba(123, 84, 85, 0.15);
+}
+.input-field::placeholder {
+  color: #827473;
+}
+
+/* Product grid card in contact form */
+.product-grid-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #d4c2c2;
+  transition: all 0.2s ease;
+}
+.product-grid-card.selected {
+  border-color: #7b5455;
+  box-shadow: 0 0 0 1px #f4c2c2;
+}
+.product-grid-card:hover {
+  border-color: #f4c2c2;
+}
+
+/* Quantity button */
+.qty-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.qty-minus {
+  background: #ebe7e4;
+  color: #504444;
+}
+.qty-minus:hover {
+  background: #ddd9d6;
+}
+.qty-plus {
+  background: #f4c2c2;
+  color: #7b5455;
+}
+.qty-plus:hover {
+  background: #ecbaba;
+}
+
+/* Quantity input */
+.qty-input {
+  width: 3rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1c1c19;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.qty-input:focus {
+  border-bottom-color: #7b5455;
+}
+
+/* Password gate overlay */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  background: #fdf9f5;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-gate.hidden {
+  display: none;
+}
+
+/* Success state animation */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-success {
+  animation: popIn 0.5s ease-out forwards;
+}

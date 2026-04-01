@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Picki Macarons — Armá tu Pedido</title>
+  <meta name="robots" content="noindex, nofollow"/>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css"/>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#d4c2c2",
+            "primary": "#7b5455",
+            "surface": "#fdf9f5",
+            "on-surface": "#1c1c19",
+            "surface-container": "#f1ede9",
+            "surface-container-low": "#f7f3ef",
+            "surface-container-high": "#ebe7e4",
+            "on-primary": "#ffffff",
+            "primary-container": "#f4c2c2",
+            "on-surface-variant": "#504444",
+            "secondary-container": "#d4e6e5",
+            "on-secondary-container": "#576867",
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+
+  <!-- ===== PASSWORD GATE ===== -->
+  <div id="password-gate" class="password-gate">
+    <div class="max-w-sm w-full mx-4 text-center">
+      <div class="bg-surface-container-low rounded-lg editorial-shadow p-10">
+        <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-6">
+          <span class="material-symbols-outlined text-primary text-3xl">lock</span>
+        </div>
+        <h1 class="font-headline italic text-2xl text-primary mb-2">Picki Admin</h1>
+        <p class="text-on-surface-variant text-sm mb-6">Ingresá la contraseña para acceder</p>
+        <input
+          id="password-input"
+          type="password"
+          placeholder="Contraseña"
+          class="input-field mb-4"
+          autofocus
+        />
+        <p id="password-error" class="text-red-500 text-sm mb-4 hidden"></p>
+        <button
+          id="password-submit"
+          type="button"
+          class="w-full bg-primary text-on-primary py-3 rounded-full font-bold btn-animate"
+        >
+          Ingresar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="fixed top-0 w-full z-50 bg-[#fdf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(28,28,25,0.06)] animate-header">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+      <a href="index.html" class="text-2xl font-bold font-headline text-primary tracking-tight cursor-pointer active:scale-95 duration-200">
+        Picki Macarons
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg btn-animate">← Volver</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="min-h-screen flex flex-col pt-24">
+    <div class="flex-grow flex items-start justify-center py-12 px-6">
+
+      <div class="bg-surface-container-low rounded-lg editorial-shadow w-full max-w-4xl overflow-hidden animate-on-scroll">
+
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-primary to-primary-container py-10 px-8 text-center text-white">
+          <h1 class="font-headline italic text-3xl md:text-4xl mb-2">Armá tu pedido de festejo</h1>
+          <p class="font-body text-white/90">Seleccioná los productos y cantidades para tu evento ideal.</p>
+        </div>
+
+        <!-- Success State -->
+        <div id="form-success" class="hidden p-12 flex flex-col items-center text-center space-y-4 animate-success">
+          <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center text-4xl">🎀</div>
+          <h2 class="font-headline italic text-2xl text-primary">¡Pedido enviado!</h2>
+          <p class="text-on-surface-variant max-w-md">
+            Recibimos tu consulta con el detalle de los productos. Nos pondremos en contacto a la brevedad por email o WhatsApp para confirmar disponibilidad y presupuesto.
+          </p>
+          <button onclick="resetForm()" class="mt-4 text-sm tracking-wide text-primary underline underline-offset-4 hover:text-primary-container transition-colors">
+            Enviar otra consulta
+          </button>
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contact-form" class="p-8 md:p-12 space-y-8">
+
+          <!-- Personal Data -->
+          <div class="space-y-4">
+            <h3 class="font-headline italic text-2xl text-primary border-b border-outline-variant/15 pb-2">Tus Datos</h3>
+            <div class="grid md:grid-cols-2 gap-6 pt-2">
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Nombre completo</label>
+                <input required type="text" name="nombre" class="input-field" placeholder="Ej. Ana Pérez"/>
+              </div>
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Email</label>
+                <input required type="email" name="email" class="input-field" placeholder="ana@email.com"/>
+              </div>
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Número de WhatsApp</label>
+                <input required type="tel" name="whatsapp" class="input-field" placeholder="+54 9 11 1234-5678"/>
+              </div>
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Fecha del Evento</label>
+                <input required type="date" name="fecha" class="input-field"/>
+              </div>
+              <div class="space-y-2 md:col-span-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Tipo de Evento</label>
+                <select required name="tipoEvento" class="input-field">
+                  <option value="" disabled selected>Seleccionar...</option>
+                  <option value="Cumpleaños">Cumpleaños</option>
+                  <option value="Aniversario">Aniversario</option>
+                  <option value="Boda / Casamiento">Boda / Casamiento</option>
+                  <option value="Bautismo / Comunión">Bautismo / Comunión</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="space-y-4 mt-4">
+            <h3 class="font-headline italic text-2xl text-primary border-b border-outline-variant/15 pb-2">Armá tu Pedido</h3>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto p-4 border border-outline-variant/15 rounded-lg bg-surface/50 shadow-inner">
+              <!-- Built by JS -->
+            </div>
+          </div>
+
+          <!-- Additional Notes -->
+          <div class="space-y-4 pt-4">
+            <label class="block text-sm font-medium text-on-surface-variant">Notas Adicionales (Temática, Colores, Explicaciones específicas)</label>
+            <textarea rows="3" name="notasAdicionales" class="input-field resize-none" placeholder="Contanos qué ideas tenés (colores, sabores, temáticas especiales)..."></textarea>
+          </div>
+
+          <!-- Error Message -->
+          <p id="form-error" class="text-red-500 text-sm text-center font-medium bg-red-50 p-3 rounded-lg hidden"></p>
+
+          <!-- Submit Button -->
+          <button
+            id="submit-btn"
+            type="submit"
+            class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-4 rounded-full transition-all duration-300 editorial-shadow text-lg btn-animate"
+          >
+            Confirmar y Enviar Consulta
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full mt-auto rounded-t-[2rem] bg-surface-container-low">
+      <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-7xl mx-auto">
+        <div class="mb-8 md:mb-0 text-center md:text-left">
+          <div class="font-headline italic text-xl text-primary mb-2">Picki Macarons</div>
+          <div class="font-body text-xs tracking-widest uppercase text-on-surface-variant">
+            &copy; 2025 Picki Macarons. The Artisanal Atelier.
+          </div>
+        </div>
+        <div class="flex gap-8 items-center">
+          <a href="index.html" class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Inicio</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Contact JS -->
+  <script src="js/contact.js"></script>
+</body>
+</html>
