@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambientaciones — Picki Macarons</title>
+  <meta name="description"
+    content="Mesas dulces y ambientaciones artesanales para eventos sociales y corporativos. Bodas, XV años, bautismos y más con el toque Picki." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#d4c2c2",
+            "on-secondary": "#ffffff",
+            "tertiary": "#5f5e5e",
+            "outline": "#827473",
+            "primary": "#7b5455",
+            "surface": "#fdf9f5",
+            "on-surface": "#1c1c19",
+            "surface-container": "#f1ede9",
+            "surface-container-highest": "#e5e2de",
+            "surface-bright": "#fdf9f5",
+            "background": "#fdf9f5",
+            "on-primary-container": "#734e4e",
+            "on-secondary-container": "#576867",
+            "secondary-container": "#d4e6e5",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#516161",
+            "surface-container-low": "#f7f3ef",
+            "surface-container-high": "#ebe7e4",
+            "on-primary": "#ffffff",
+            "primary-container": "#f4c2c2",
+            "on-surface-variant": "#504444",
+            "on-background": "#1c1c19",
+            "tertiary-container": "#d0cece",
+            "on-tertiary-container": "#585757",
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+            "label": ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+
+  <!-- ===== TOP NAVIGATION ===== -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-[#fdf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(28,28,25,0.06)] animate-header">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+      <a href="index.html"
+        class="text-2xl font-bold font-headline text-primary tracking-tight cursor-pointer active:scale-95 duration-200">
+        Picki Macarons
+      </a>
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html">Inicio</a>
+        <a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html#productos">Productos</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html#contacto">Contacto</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform duration-300 btn-animate">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24">
+
+    <!-- ===== HERO ===== -->
+    <section class="relative px-8 py-20 lg:py-28 overflow-hidden bg-[#e8f3f1]">
+      <div class="max-w-5xl mx-auto text-center animate-hero-text">
+        <span
+          class="inline-block px-4 py-1.5 mb-6 bg-primary-container text-on-primary-container rounded-full text-xs font-bold tracking-widest uppercase">Eventos
+          &amp; Ambientaciones</span>
+        <h1 class="font-headline italic text-5xl lg:text-7xl text-primary leading-[1.15] mb-8">
+          Tu festejo,<br />vestido de dulce.
+        </h1>
+        <p class="text-on-surface-variant text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed font-body">
+          Diseñamos mesas dulces y ambientaciones a medida para que cada evento sea único, memorable y lleno de detalles que sorprendan.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== TIPOS DE EVENTOS ===== -->
+    <section class="py-24 px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="font-headline italic text-4xl lg:text-5xl text-primary mb-4">Tipos de eventos</h2>
+          <p class="text-on-surface-variant font-body">Desde el festejo más íntimo hasta la celebración más grande</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+          <!-- Eventos Sociales -->
+          <div class="group bg-surface rounded-lg editorial-shadow overflow-hidden animate-on-scroll">
+            <div class="relative aspect-video overflow-hidden">
+              <img alt="Eventos Sociales" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqQ7iUno82krzxNSzBxw0_AFxoA71Lblq7inCiTVn0G9JvQNSmFxnl_tOv2xgNdm67s1M8gUGTmZlGj5cPapZGMVyXMxyJ-wy1nFp-83DzUSZ9HTN1bfok90faq_binDgzGEA6RpbNBHZ2k6TbYeG0bWYQdic3ChUjHjfGYr8vhChE0ecDVJLCpewSzLETJPDKkiYIFLfMGTxVdNoGLtnmWiKc5Ud7T8qf14ylZjWyQiYNSNq0kUVAE-o4GSy5PifxC72sb0bUp7I" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-primary-container text-on-primary-container text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Social</span>
+            </div>
+            <div class="p-8">
+              <h3 class="font-headline italic text-2xl text-primary mb-3">Eventos Sociales</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Bodas, XV años, bautismos y aniversarios con mesas dulces de ensueño. Creamos ambientaciones que se integran al estilo de tu festejo: romántico, minimalista, vintage o moderno.
+              </p>
+              <ul class="space-y-2 text-sm text-on-surface-variant">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Bodas &amp; Casamientos</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> XV Años &amp; Cumpleaños</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Bautismos &amp; Comuniones</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Aniversarios &amp; Festejos íntimos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Eventos Corporativos -->
+          <div class="group bg-surface rounded-lg editorial-shadow overflow-hidden animate-on-scroll delay-1">
+            <div class="relative aspect-video overflow-hidden">
+              <img alt="Eventos Corporativos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZcI2OmTqJHovY2-2E0gei6EOMsxF5t4svJKekQGDagUE3yQRLf36rJHE7tVHY2p4awJN7wtA2OdFmxXoDanEcyDN9IQijqBrD9Nc5iaFOOCe3w6vHYJcpJkbkKc3OAmN4aD_pomIimzz8R_VI6jeIrbVXbG3mWA8ssMnO5o2zX8JNG3rgjSMJdIIYnxIAX4hhrSry9nqYnVZIRZOxuDd5rKl_W1NIH0yGrBdA4x6xbos93r5YKs-DpVoAv8wl3eFFbjh7ndSFQ4o" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Corporativo</span>
+            </div>
+            <div class="p-8">
+              <h3 class="font-headline italic text-2xl text-primary mb-3">Eventos Corporativos</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Branding en macarons y catering de alta gama para empresas. Personalizamos colores, sabores y packaging con la identidad de tu marca para que cada detalle comunique.
+              </p>
+              <ul class="space-y-2 text-sm text-on-surface-variant">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Lanzamientos de producto</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Eventos de fin de año</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Gifting &amp; Kit empresarial</li>
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Mesas dulces con branding</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CÓMO FUNCIONA ===== -->
+    <section class="bg-surface-container-low py-24 px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="font-headline italic text-4xl lg:text-5xl text-primary mb-4">¿Cómo funciona?</h2>
+          <p class="text-on-surface-variant font-body">Un proceso simple para que el resultado sea perfecto</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="text-center animate-on-scroll">
+            <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
+              <span class="font-headline italic text-2xl text-primary font-bold">1</span>
+            </div>
+            <h3 class="font-headline italic text-xl text-primary mb-3">Nos contás tu idea</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Fecha, tipo de evento, cantidad de personas y estética que tenés en mente. Cuanto más detalle, mejor resultado.</p>
+          </div>
+
+          <div class="text-center animate-on-scroll delay-1">
+            <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
+              <span class="font-headline italic text-2xl text-primary font-bold">2</span>
+            </div>
+            <h3 class="font-headline italic text-xl text-primary mb-3">Diseñamos tu propuesta</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Armamos una propuesta personalizada con productos, cantidades y presupuesto a medida para tu evento.</p>
+          </div>
+
+          <div class="text-center animate-on-scroll delay-2">
+            <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-5">
+              <span class="font-headline italic text-2xl text-primary font-bold">3</span>
+            </div>
+            <h3 class="font-headline italic text-xl text-primary mb-3">Lo hacemos realidad</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Preparamos todo con anticipación y lo entregamos listo para que solo tengas que disfrutar tu festejo.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section id="contacto-amb" class="py-24 px-8 bg-[#e8f3f1]">
+      <div class="max-w-4xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-headline italic text-4xl lg:text-5xl text-primary mb-6 leading-tight">
+          ¿Listo para tu próximo festejo?<br />Envíanos un mensaje.
+        </h2>
+        <p class="text-on-surface-variant text-lg mb-10 max-w-xl mx-auto">Contanos tu idea y te armamos una propuesta sin compromiso.</p>
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="inline-block bg-[#d4a5a5] text-white px-10 py-4 rounded-full font-bold text-lg editorial-shadow uppercase tracking-widest btn-animate">
+          Contáctanos por WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="w-full mt-auto rounded-t-[2rem] bg-surface-container-low">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-7xl mx-auto">
+      <div class="mb-8 md:mb-0 text-center md:text-left">
+        <div class="font-headline italic text-xl text-primary mb-2">Picki Macarons</div>
+        <div class="font-body text-xs tracking-widest uppercase text-on-surface-variant">
+          &copy; 2025 Picki Macarons. Pastelería artesanal.
+        </div>
+      </div>
+      <div class="flex gap-8 items-center">
+        <a href="https://www.instagram.com/pickimacarons/" target="_blank" rel="noopener noreferrer"
+          class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+          </svg>
+        </a>
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+        <a href="#"
+          class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Privacidad</a>
+        <a href="#"
+          class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

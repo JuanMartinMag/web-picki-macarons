@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosotras — Picki Macarons</title>
+  <meta name="description"
+    content="Conocé la historia detrás de Picki Macarons. Pastelería artesanal hecha con amor, pensando en vos." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#d4c2c2",
+            "on-secondary": "#ffffff",
+            "tertiary": "#5f5e5e",
+            "outline": "#827473",
+            "primary": "#7b5455",
+            "surface": "#fdf9f5",
+            "on-surface": "#1c1c19",
+            "surface-container": "#f1ede9",
+            "surface-container-highest": "#e5e2de",
+            "surface-bright": "#fdf9f5",
+            "background": "#fdf9f5",
+            "on-primary-container": "#734e4e",
+            "on-secondary-container": "#576867",
+            "secondary-container": "#d4e6e5",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#516161",
+            "surface-container-low": "#f7f3ef",
+            "surface-container-high": "#ebe7e4",
+            "on-primary": "#ffffff",
+            "primary-container": "#f4c2c2",
+            "on-surface-variant": "#504444",
+            "on-background": "#1c1c19",
+            "tertiary-container": "#d0cece",
+            "on-tertiary-container": "#585757",
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+            "label": ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+
+  <!-- ===== TOP NAVIGATION ===== -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-[#fdf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(28,28,25,0.06)] animate-header">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+      <a href="index.html"
+        class="text-2xl font-bold font-headline text-primary tracking-tight cursor-pointer active:scale-95 duration-200">
+        Picki Macarons
+      </a>
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html">Inicio</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html#productos">Productos</a>
+        <a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="nosotros.html">Nosotras</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg hover:scale-105 transition-transform duration-300"
+          href="index.html#contacto">Contacto</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform duration-300 btn-animate">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24">
+
+    <!-- ===== HERO NOSOTRAS ===== -->
+    <section class="relative px-8 py-20 lg:py-28 overflow-hidden bg-[#e8f3f1]">
+      <div class="max-w-5xl mx-auto text-center animate-hero-text">
+        <span
+          class="inline-block px-4 py-1.5 mb-6 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase">Nuestra
+          historia</span>
+        <h1 class="font-headline italic text-5xl lg:text-7xl text-primary leading-[1.15] mb-8">
+          Detrás de cada dulce,<br />hay una historia.
+        </h1>
+        <p class="text-on-surface-variant text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed font-body">
+          Somos Picki Macarons, una pastelería artesanal nacida del amor por los detalles, los sabores que perduran y los momentos que no se olvidan.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== STORY SECTION ===== -->
+    <section class="py-24 px-8">
+      <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Image -->
+        <div class="relative w-full aspect-square animate-on-scroll">
+          <div
+            class="absolute inset-0 bg-primary-container/40 rounded-full blur-3xl -z-10 translate-x-6 translate-y-6">
+          </div>
+          <img src="images/imagen-home-pickis.png" alt="Picki Macarons artesanales"
+            class="w-full h-full object-cover object-[75%_25%] rounded-xl editorial-shadow" loading="lazy" />
+        </div>
+        <!-- Text -->
+        <div class="animate-on-scroll delay-1">
+          <span
+            class="inline-block px-4 py-1.5 mb-6 bg-primary-container text-on-primary-container rounded-full text-xs font-bold tracking-widest uppercase">Quiénes
+            somos</span>
+          <h2 class="font-headline italic text-4xl text-primary mb-6 leading-tight">
+            Hecho con amor,<br />pensando en vos.
+          </h2>
+          <p class="text-on-surface-variant text-base leading-relaxed mb-5">
+            Todo comenzó con una receta, mucha paciencia y la certeza de que la pastelería bien hecha es un lenguaje propio. En Picki nos especializamos en macarons, tortas y cookies artesanales que trascienden la estética para convertirse en recuerdos.
+          </p>
+          <p class="text-on-surface-variant text-base leading-relaxed mb-5">
+            Cada pieza que sale de nuestra cocina pasa por un proceso meticuloso: elegimos los mejores ingredientes, respetamos los tiempos y ponemos atención en cada detalle, desde el color hasta la textura del relleno.
+          </p>
+          <p class="text-on-surface-variant text-base leading-relaxed">
+            Trabajamos para eventos íntimos y celebraciones grandes, siempre con la misma dedicación. Porque para nosotras, no hay festejo pequeño cuando hay amor de por medio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VALORES ===== -->
+    <section class="bg-surface-container-low py-24 px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="font-headline italic text-4xl lg:text-5xl text-primary mb-4">Lo que nos mueve</h2>
+          <p class="text-on-surface-variant font-body">Los valores que guían cada creación de Picki</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-surface rounded-lg editorial-shadow p-8 text-center animate-on-scroll">
+            <span
+              class="w-14 h-14 flex items-center justify-center bg-primary-container text-primary rounded-full mx-auto mb-5">
+              <span class="material-symbols-outlined text-2xl">favorite</span>
+            </span>
+            <h3 class="font-headline italic text-2xl text-primary mb-3">Con amor</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Cada pedido es único. Ponemos el mismo cuidado en una caja de cuatro macarons que en una mesa dulce para doscientas personas.</p>
+          </div>
+
+          <div class="bg-surface rounded-lg editorial-shadow p-8 text-center animate-on-scroll delay-1">
+            <span
+              class="w-14 h-14 flex items-center justify-center bg-secondary-container text-secondary rounded-full mx-auto mb-5">
+              <span class="material-symbols-outlined text-2xl">eco</span>
+            </span>
+            <h3 class="font-headline italic text-2xl text-primary mb-3">Ingredientes reales</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Sin atajos. Usamos ingredientes de calidad, sin conservantes artificiales, porque el sabor verdadero no necesita disfraces.</p>
+          </div>
+
+          <div class="bg-surface rounded-lg editorial-shadow p-8 text-center animate-on-scroll delay-2">
+            <span
+              class="w-14 h-14 flex items-center justify-center bg-tertiary-container text-on-tertiary-container rounded-full mx-auto mb-5">
+              <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+            </span>
+            <h3 class="font-headline italic text-2xl text-primary mb-3">Detalle y estética</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">El primer mordisco entra por los ojos. Diseñamos cada pieza para que sea tan hermosa como deliciosa, pensando en la experiencia completa.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-24 px-8 bg-[#e8f3f1]">
+      <div class="max-w-4xl mx-auto text-center animate-on-scroll">
+        <h2 class="font-headline italic text-4xl lg:text-5xl text-primary mb-8 leading-tight">
+          ¿Querés que tu próximo evento<br />tenga el toque Picki?
+        </h2>
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="inline-block bg-[#d4a5a5] text-white px-10 py-4 rounded-full font-bold text-lg editorial-shadow uppercase tracking-widest btn-animate">
+          Escribinos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="w-full mt-auto rounded-t-[2rem] bg-surface-container-low">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full max-w-7xl mx-auto">
+      <div class="mb-8 md:mb-0 text-center md:text-left">
+        <div class="font-headline italic text-xl text-primary mb-2">Picki Macarons</div>
+        <div class="font-body text-xs tracking-widest uppercase text-on-surface-variant">
+          &copy; 2025 Picki Macarons. Pastelería artesanal.
+        </div>
+      </div>
+      <div class="flex gap-8 items-center">
+        <a href="https://www.instagram.com/pickimacarons/" target="_blank" rel="noopener noreferrer"
+          class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+          </svg>
+        </a>
+        <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+        <a href="#"
+          class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Privacidad</a>
+        <a href="#"
+          class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
