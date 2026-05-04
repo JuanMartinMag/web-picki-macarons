@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Picki Macarons — Armá tu Pedido</title>
+  <title>Picki Macarons — Ingreso de Pedido Nuevo</title>
   <meta name="robots" content="noindex, nofollow"/>
 
   <!-- Tailwind CDN -->
@@ -97,8 +97,7 @@
 
         <!-- Header Banner -->
         <div class="bg-gradient-to-r from-primary to-primary-container py-10 px-8 text-center text-white">
-          <h1 class="font-headline italic text-3xl md:text-4xl mb-2">Armá tu pedido de festejo</h1>
-          <p class="font-body text-white/90">Seleccioná los productos y cantidades para tu evento ideal.</p>
+          <h1 class="font-headline italic text-3xl md:text-4xl">Ingreso de Pedido Nuevo</h1>
         </div>
 
         <!-- Success State -->
@@ -154,8 +153,55 @@
           <!-- Product Grid -->
           <div class="space-y-4 mt-4">
             <h3 class="font-headline italic text-2xl text-primary border-b border-outline-variant/15 pb-2">Armá tu Pedido</h3>
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto p-4 border border-outline-variant/15 rounded-lg bg-surface/50 shadow-inner">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 border border-outline-variant/15 rounded-lg bg-surface/50 shadow-inner">
               <!-- Built by JS -->
+            </div>
+          </div>
+
+          <!-- Ambientaciones Section -->
+          <div class="space-y-5 mt-4">
+            <h3 class="font-headline italic text-2xl text-primary border-b border-outline-variant/15 pb-2">Ambientación</h3>
+
+            <!-- Tamaño S/M/L/XL -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-on-surface-variant">Tamaño</label>
+              <div class="flex gap-3 flex-wrap">
+                <label class="cursor-pointer">
+                  <input type="radio" name="ambTamano" value="S" class="sr-only peer"/>
+                  <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">S</span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="ambTamano" value="M" class="sr-only peer"/>
+                  <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">M</span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="ambTamano" value="L" class="sr-only peer"/>
+                  <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">L</span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="ambTamano" value="XL" class="sr-only peer"/>
+                  <span class="inline-flex items-center justify-center w-14 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">XL</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Lugar + Horario -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Lugar</label>
+                <input type="text" name="ambLugar" class="input-field" placeholder="Ej. Salón Los Arcos, Palermo..."/>
+              </div>
+              <div class="space-y-2">
+                <label class="block text-sm font-medium text-on-surface-variant">Horario</label>
+                <input type="text" name="ambHorario" class="input-field" placeholder="Ej. 18:00 hs"/>
+              </div>
+            </div>
+
+            <!-- Link al diseño -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-on-surface-variant">Link al diseño (PDF o imagen)</label>
+              <input type="url" name="ambLink" class="input-field" placeholder="https://drive.google.com/..."/>
+              <p class="text-xs text-on-surface-variant/70">Subí el archivo a Google Drive y pegá el link de acceso aquí.</p>
             </div>
           </div>
 
@@ -174,7 +220,7 @@
             type="submit"
             class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-4 rounded-full transition-all duration-300 editorial-shadow text-lg btn-animate"
           >
-            Confirmar y Enviar Consulta
+            Guardar
           </button>
         </form>
 
