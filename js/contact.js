@@ -1,6 +1,6 @@
 /* ===== Contact Form Logic ===== */
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytLI7yc46mg11Mh06u6k_OVHasLPwQGRrsLv-a_vAPPrgG5VjiE50_Yp9OEr2Z5v_T1w/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5KG5c0oSpY2rgdW51W1UvUUi5EsoxdR9tse8yr4FNuUukXlp6l7JsO3s9MO7oBCFgMw/exec';
 
 // ─── Product Configuration ────────────────────────────────────────────────────
 // tipo: undefined = estándar | 'torta' | 'sabores' | 'sabor_simple'
