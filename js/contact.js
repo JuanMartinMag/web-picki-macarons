@@ -1,20 +1,20 @@
 /* ===== Contact Form Logic ===== */
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytcOWga7-bBG-H_EnBQJoQZvKzftrjZzv6PLQmG7zlIiTwE1s86pcPqJPEt7AY9Dev_g/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytLI7yc46mg11Mh06u6k_OVHasLPwQGRrsLv-a_vAPPrgG5VjiE50_Yp9OEr2Z5v_T1w/exec';
 
 // ─── Product Configuration ────────────────────────────────────────────────────
 // tipo: undefined = estándar | 'torta' | 'sabores' | 'sabor_simple'
 // deco: true = mostrar campo de deco (todos menos Macarrons)
 // diametro: true = mostrar campo diámetro/tamaño (solo Matilda)
 const PRODUCTOS_CONFIG = [
-  { name: "Cookies",                    deco: true },
-  { name: "Alfajorcitos",               deco: true },
-  { name: "Cakepops",                   deco: true },
-  { name: "Icepops",                    deco: true },
-  { name: "Oreos",                      deco: true },
-  { name: "Macarrons",                  deco: false },
-  { name: "Muffins con Buttercream",    deco: true },
-  { name: "Muffins Deco",               deco: true },
+  { name: "Cookies", deco: true },
+  { name: "Alfajorcitos", deco: true },
+  { name: "Cakepops", deco: true },
+  { name: "Icepops", deco: true },
+  { name: "Oreos", deco: true },
+  { name: "Macarrons", deco: false },
+  { name: "Muffins con Buttercream", deco: true },
+  { name: "Muffins Deco", deco: true },
   {
     name: "Mini Shots",
     deco: true,
@@ -27,16 +27,16 @@ const PRODUCTOS_CONFIG = [
     tipo: 'sabores',
     sabores: ["Limón", "Brownie", "Blondie", "Rogel"]
   },
-  { name: "Torta Mediana",              deco: true, tipo: 'torta' },
-  { name: "Torta Grande",               deco: true, tipo: 'torta' },
-  { name: "Torta 18cm 25 porciones",   deco: true, tipo: 'torta' },
-  { name: "Torta 18cm 35 porciones",   deco: true, tipo: 'torta' },
-  { name: "Torta 18cm 12 porciones",   deco: true, tipo: 'torta' },
-  { name: "Torta Corazon",             deco: true, tipo: 'torta' },
-  { name: "Tortas Dobles",             deco: true, tipo: 'torta' },
-  { name: "Matilda",                   deco: true, tipo: 'torta', diametro: true },
-  { name: "Rogel",                     deco: true },
-  { name: "Cheescake",                 deco: true, tipo: 'sabor_simple' },
+  { name: "Torta Mediana", deco: true, tipo: 'torta' },
+  { name: "Torta Grande", deco: true, tipo: 'torta' },
+  { name: "Torta 18cm 25 porciones", deco: true, tipo: 'torta' },
+  { name: "Torta 18cm 35 porciones", deco: true, tipo: 'torta' },
+  { name: "Torta 18cm 12 porciones", deco: true, tipo: 'torta' },
+  { name: "Torta Corazon", deco: true, tipo: 'torta' },
+  { name: "Tortas Dobles", deco: true, tipo: 'torta' },
+  { name: "Matilda", deco: true, tipo: 'torta', diametro: true },
+  { name: "Rogel", deco: true },
+  { name: "Cheescake", deco: true, tipo: 'sabor_simple' },
 ];
 
 // ─── State ────────────────────────────────────────────────────────────────────
@@ -54,8 +54,8 @@ function initState() {
     }
     if (cfg.tipo === 'torta') {
       s.cobertura = '';
-      s.sabor     = '';
-      s.rellenos  = '';
+      s.sabor = '';
+      s.rellenos = '';
     }
     if (cfg.tipo === 'sabor_simple') {
       s.sabor = '';
@@ -188,14 +188,14 @@ function buildProductGrid() {
     const btn = e.target.closest('[data-action]');
     if (!btn) return;
 
-    const p      = btn.dataset.product;
+    const p = btn.dataset.product;
     const action = btn.dataset.action;
-    const cfg    = PRODUCTOS_CONFIG.find(c => c.name === p);
+    const cfg = PRODUCTOS_CONFIG.find(c => c.name === p);
 
     if (action === 'plus-sabor' || action === 'minus-sabor') {
-      const sabor   = btn.dataset.sabor;
+      const sabor = btn.dataset.sabor;
       const current = pedidoGrid[p].sabores[sabor];
-      const newVal  = action === 'plus-sabor' ? current + 1 : Math.max(0, current - 1);
+      const newVal = action === 'plus-sabor' ? current + 1 : Math.max(0, current - 1);
       updateSaborQty(cfg, sabor, newVal);
     } else if (action === 'plus') {
       updateQty(cfg, pedidoGrid[p].cantidad + 1);
@@ -229,8 +229,8 @@ function buildProductGrid() {
 }
 
 function updateQty(cfg, newVal) {
-  const p     = cfg.name;
-  const card  = document.getElementById(`card-${p.replace(/\s/g, '_')}`);
+  const p = cfg.name;
+  const card = document.getElementById(`card-${p.replace(/\s/g, '_')}`);
   pedidoGrid[p].cantidad = newVal;
 
   const input = card.querySelector('input[data-field="cantidad"]');
@@ -249,7 +249,7 @@ function updateQty(cfg, newVal) {
 }
 
 function updateSaborQty(cfg, sabor, newVal) {
-  const p    = cfg.name;
+  const p = cfg.name;
   const card = document.getElementById(`card-${p.replace(/\s/g, '_')}`);
   pedidoGrid[p].sabores[sabor] = newVal;
 
@@ -262,9 +262,9 @@ function updateSaborQty(cfg, sabor, newVal) {
 
 // ─── Password Gate ────────────────────────────────────────────────────────────
 function setupPasswordGate() {
-  const gate          = document.getElementById('password-gate');
+  const gate = document.getElementById('password-gate');
   const passwordInput = document.getElementById('password-input');
-  const passwordBtn   = document.getElementById('password-submit');
+  const passwordBtn = document.getElementById('password-submit');
   const passwordError = document.getElementById('password-error');
 
   if (sessionStorage.getItem('picki_auth') === 'true') {
@@ -290,16 +290,30 @@ function setupPasswordGate() {
   passwordInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); attempt(); } });
 }
 
+// ─── File Utilities ───────────────────────────────────────────────────────────
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      const base64Data = result.split(',')[1];
+      resolve(base64Data);
+    };
+    reader.onerror = error => reject(error);
+    reader.readAsDataURL(file);
+  });
+}
+
 // ─── Submit ───────────────────────────────────────────────────────────────────
 async function handleSubmit(e) {
   e.preventDefault();
 
   const submitBtn = document.getElementById('submit-btn');
-  const errorEl   = document.getElementById('form-error');
-  const formEl    = document.getElementById('contact-form');
+  const errorEl = document.getElementById('form-error');
+  const formEl = document.getElementById('contact-form');
   const successEl = document.getElementById('form-success');
 
-  submitBtn.disabled    = true;
+  submitBtn.disabled = true;
   submitBtn.textContent = 'Guardando pedido...';
   errorEl.classList.add('hidden');
 
@@ -309,7 +323,7 @@ async function handleSubmit(e) {
     // ── Build product lines ──
     const lines = [];
     PRODUCTOS_CONFIG.forEach(cfg => {
-      const s     = pedidoGrid[cfg.name];
+      const s = pedidoGrid[cfg.name];
       const total = getTotalQty(cfg);
       if (total === 0) return;
 
@@ -325,8 +339,8 @@ async function handleSubmit(e) {
         let line = `${total}x ${cfg.name}`;
         if (cfg.tipo === 'torta') {
           if (s.cobertura) line += ` | Cobertura: ${s.cobertura}`;
-          if (s.sabor)     line += ` | Sabor: ${s.sabor}`;
-          if (s.rellenos)  line += ` | Rellenos: ${s.rellenos}`;
+          if (s.sabor) line += ` | Sabor: ${s.sabor}`;
+          if (s.rellenos) line += ` | Rellenos: ${s.rellenos}`;
           if (cfg.diametro && s.diametro) line += ` | Tamaño: ${s.diametro}`;
         }
         if (cfg.tipo === 'sabor_simple' && s.sabor) line += ` | Sabor: ${s.sabor}`;
@@ -335,19 +349,31 @@ async function handleSubmit(e) {
       }
     });
 
+    // ── File Upload ──
+    const fileInput = document.getElementById('ambFile');
+    let fileData = null;
+    let fileName = null;
+    let fileType = null;
+
+    if (fileInput && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      fileName = file.name;
+      fileType = file.type;
+      fileData = await readFileAsBase64(file);
+    }
+
     // ── Ambientaciones ──
-    const ambTamano  = formData.get('ambTamano')  || '';
-    const ambLugar   = formData.get('ambLugar')   || '';
+    const ambTamano = formData.get('ambTamano') || '';
+    const ambLugar = formData.get('ambLugar') || '';
     const ambHorario = formData.get('ambHorario') || '';
-    const ambLink    = formData.get('ambLink')    || '';
 
     let ambientacionStr = '';
-    if (ambTamano || ambLugar || ambHorario || ambLink) {
+    if (ambTamano || ambLugar || ambHorario || fileName) {
       const parts = [];
-      if (ambTamano)  parts.push(`Tamaño: ${ambTamano}`);
-      if (ambLugar)   parts.push(`Lugar: ${ambLugar}`);
+      if (ambTamano) parts.push(`Tamaño: ${ambTamano}`);
+      if (ambLugar) parts.push(`Lugar: ${ambLugar}`);
       if (ambHorario) parts.push(`Horario: ${ambHorario}`);
-      if (ambLink)    parts.push(`Link diseño: ${ambLink}`);
+      if (fileName) parts.push(`Archivo adjunto: ${fileName}`);
       ambientacionStr = parts.join(' | ');
     }
 
@@ -359,12 +385,15 @@ async function handleSubmit(e) {
     ].join('\n');
 
     const payload = {
-      Nombre:              formData.get('nombre'),
-      Email:               formData.get('email'),
-      WhatsApp:            formData.get('whatsapp'),
-      'Fecha del Evento':  formData.get('fecha'),
-      'Tipo de Evento':    formData.get('tipoEvento'),
+      Nombre: formData.get('nombre'),
+      Email: formData.get('email'),
+      WhatsApp: formData.get('whatsapp'),
+      'Fecha del Evento': formData.get('fecha'),
+      'Tipo de Evento': formData.get('tipoEvento'),
       'Detalles del Pedido': detallesString,
+      fileName: fileName,
+      fileType: fileType,
+      fileData: fileData,
       Timestamp: new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' }),
     };
 
@@ -382,14 +411,14 @@ async function handleSubmit(e) {
     errorEl.textContent = 'No se pudo enviar el mensaje. Por favor intentá de nuevo.';
     errorEl.classList.remove('hidden');
   } finally {
-    submitBtn.disabled    = false;
+    submitBtn.disabled = false;
     submitBtn.textContent = 'Guardar';
   }
 }
 
 // ─── Reset ────────────────────────────────────────────────────────────────────
 function resetForm() {
-  const formEl    = document.getElementById('contact-form');
+  const formEl = document.getElementById('contact-form');
   const successEl = document.getElementById('form-success');
   formEl.reset();
   initState();

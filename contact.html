@@ -102,13 +102,13 @@
 
         <!-- Success State -->
         <div id="form-success" class="hidden p-12 flex flex-col items-center text-center space-y-4 animate-success">
-          <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center text-4xl">🎀</div>
-          <h2 class="font-headline italic text-2xl text-primary">¡Pedido enviado!</h2>
+          <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center text-4xl">✅</div>
+          <h2 class="font-headline italic text-2xl text-primary">Pedido cargado correctamente</h2>
           <p class="text-on-surface-variant max-w-md">
-            Recibimos tu consulta con el detalle de los productos. Nos pondremos en contacto a la brevedad por email o WhatsApp para confirmar disponibilidad y presupuesto.
+            El pedido ha sido registrado con éxito en la base de datos y la planilla de Google Sheets.
           </p>
           <button onclick="resetForm()" class="mt-4 text-sm tracking-wide text-primary underline underline-offset-4 hover:text-primary-container transition-colors">
-            Enviar otra consulta
+            Cargar nuevo pedido
           </button>
         </div>
 
@@ -121,23 +121,23 @@
             <div class="grid md:grid-cols-2 gap-6 pt-2">
               <div class="space-y-2">
                 <label class="block text-sm font-medium text-on-surface-variant">Nombre completo</label>
-                <input required type="text" name="nombre" class="input-field" placeholder="Ej. Ana Pérez"/>
+                <input type="text" name="nombre" class="input-field" placeholder="Ej. Ana Pérez"/>
               </div>
               <div class="space-y-2">
                 <label class="block text-sm font-medium text-on-surface-variant">Email</label>
-                <input required type="email" name="email" class="input-field" placeholder="ana@email.com"/>
+                <input type="email" name="email" class="input-field" placeholder="ana@email.com"/>
               </div>
               <div class="space-y-2">
                 <label class="block text-sm font-medium text-on-surface-variant">Número de WhatsApp</label>
-                <input required type="tel" name="whatsapp" class="input-field" placeholder="+54 9 11 1234-5678"/>
+                <input type="tel" name="whatsapp" class="input-field" placeholder="+54 9 11 1234-5678"/>
               </div>
               <div class="space-y-2">
                 <label class="block text-sm font-medium text-on-surface-variant">Fecha del Evento</label>
-                <input required type="date" name="fecha" class="input-field"/>
+                <input type="date" name="fecha" class="input-field"/>
               </div>
               <div class="space-y-2 md:col-span-2">
                 <label class="block text-sm font-medium text-on-surface-variant">Tipo de Evento</label>
-                <select required name="tipoEvento" class="input-field">
+                <select name="tipoEvento" class="input-field">
                   <option value="" disabled selected>Seleccionar...</option>
                   <option value="Cumpleaños">Cumpleaños</option>
                   <option value="Aniversario">Aniversario</option>
@@ -197,11 +197,11 @@
               </div>
             </div>
 
-            <!-- Link al diseño -->
+            <!-- Archivo de diseño -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-on-surface-variant">Link al diseño (PDF o imagen)</label>
-              <input type="url" name="ambLink" class="input-field" placeholder="https://drive.google.com/..."/>
-              <p class="text-xs text-on-surface-variant/70">Subí el archivo a Google Drive y pegá el link de acceso aquí.</p>
+              <label class="block text-sm font-medium text-on-surface-variant">Archivo de diseño (PDF o imagen)</label>
+              <input type="file" name="ambFile" id="ambFile" accept=".pdf,image/*" class="input-field p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-container file:text-on-primary-container hover:file:bg-primary/20"/>
+              <p class="text-xs text-on-surface-variant/70">Seleccioná un archivo para subir (recomendado: PDF o JPG, máx 5MB).</p>
             </div>
           </div>
 
@@ -244,6 +244,6 @@
   </main>
 
   <!-- Contact JS -->
-  <script src="js/contact.js"></script>
+  <script src="js/contact.js?v=2"></script>
 </body>
 </html>
