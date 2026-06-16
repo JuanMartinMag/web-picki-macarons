@@ -56,13 +56,15 @@
         <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mx-auto mb-6">
           <span class="material-symbols-outlined text-primary text-3xl">lock</span>
         </div>
-        <h1 class="font-headline italic text-2xl text-primary mb-2">Picki Admin</h1>
+        <div class="font-headline italic text-2xl text-primary mb-2">Picki Admin</div>
         <p class="text-on-surface-variant text-sm mb-6">Ingresá la contraseña para acceder</p>
         <input
           id="password-input"
           type="password"
           placeholder="Contraseña"
+          aria-label="Contraseña de acceso"
           class="input-field mb-4"
+          autocomplete="current-password"
           autofocus
         />
         <p id="password-error" class="text-red-500 text-sm mb-4 hidden"></p>
@@ -103,11 +105,11 @@
         <!-- Success State -->
         <div id="form-success" class="hidden p-12 flex flex-col items-center text-center space-y-4 animate-success">
           <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center text-4xl">✅</div>
-          <h2 class="font-headline italic text-2xl text-primary">Pedido cargado correctamente</h2>
+          <h2 class="font-headline italic text-2xl text-primary">Pedido enviado correctamente</h2>
           <p class="text-on-surface-variant max-w-md">
-            El pedido ha sido registrado con éxito en la base de datos y la planilla de Google Sheets.
+            El pedido fue enviado para registrarse en la planilla. Si necesitás confirmación, revisá Google Sheets.
           </p>
-          <button onclick="resetForm()" class="mt-4 text-sm tracking-wide text-primary underline underline-offset-4 hover:text-primary-container transition-colors">
+          <button type="button" id="reset-form-btn" class="mt-4 text-sm tracking-wide text-primary underline underline-offset-4 hover:text-primary-container transition-colors">
             Cargar nuevo pedido
           </button>
         </div>
@@ -120,24 +122,24 @@
             <h3 class="font-headline italic text-2xl text-primary border-b border-outline-variant/15 pb-2">Tus Datos</h3>
             <div class="grid md:grid-cols-2 gap-6 pt-2">
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Nombre completo</label>
-                <input type="text" name="nombre" class="input-field" placeholder="Ej. Ana Pérez"/>
+                <label for="nombre" class="block text-sm font-medium text-on-surface-variant">Nombre completo</label>
+                <input id="nombre" type="text" name="nombre" autocomplete="name" required class="input-field" placeholder="Ej. Ana Pérez"/>
               </div>
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Email</label>
-                <input type="email" name="email" class="input-field" placeholder="ana@email.com"/>
+                <label for="email" class="block text-sm font-medium text-on-surface-variant">Email</label>
+                <input id="email" type="email" name="email" autocomplete="email" required class="input-field" placeholder="ana@email.com"/>
               </div>
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Número de WhatsApp</label>
-                <input type="tel" name="whatsapp" class="input-field" placeholder="+54 9 11 1234-5678"/>
+                <label for="whatsapp" class="block text-sm font-medium text-on-surface-variant">Número de WhatsApp</label>
+                <input id="whatsapp" type="tel" name="whatsapp" autocomplete="tel" required class="input-field" placeholder="+54 9 11 1234-5678"/>
               </div>
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Fecha del Evento</label>
-                <input type="date" name="fecha" class="input-field"/>
+                <label for="fecha" class="block text-sm font-medium text-on-surface-variant">Fecha del Evento</label>
+                <input id="fecha" type="date" name="fecha" required class="input-field"/>
               </div>
               <div class="space-y-2 md:col-span-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Tipo de Evento</label>
-                <select name="tipoEvento" class="input-field">
+                <label for="tipoEvento" class="block text-sm font-medium text-on-surface-variant">Tipo de Evento</label>
+                <select id="tipoEvento" name="tipoEvento" required class="input-field">
                   <option value="" disabled selected>Seleccionar...</option>
                   <option value="Cumpleaños">Cumpleaños</option>
                   <option value="Aniversario">Aniversario</option>
@@ -164,22 +166,22 @@
 
             <!-- Tamaño S/M/L/XL -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-on-surface-variant">Tamaño</label>
+              <span class="block text-sm font-medium text-on-surface-variant">Tamaño</span>
               <div class="flex gap-3 flex-wrap">
                 <label class="cursor-pointer">
-                  <input type="radio" name="ambTamano" value="S" class="sr-only peer"/>
+                  <input type="radio" name="ambTamano" value="S" class="sr-only peer" aria-label="Ambientación tamaño S"/>
                   <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">S</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="ambTamano" value="M" class="sr-only peer"/>
+                  <input type="radio" name="ambTamano" value="M" class="sr-only peer" aria-label="Ambientación tamaño M"/>
                   <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">M</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="ambTamano" value="L" class="sr-only peer"/>
+                  <input type="radio" name="ambTamano" value="L" class="sr-only peer" aria-label="Ambientación tamaño L"/>
                   <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">L</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="ambTamano" value="XL" class="sr-only peer"/>
+                  <input type="radio" name="ambTamano" value="XL" class="sr-only peer" aria-label="Ambientación tamaño XL"/>
                   <span class="inline-flex items-center justify-center w-14 h-12 rounded-full border-2 border-outline-variant text-on-surface-variant font-bold text-sm transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary hover:border-primary">XL</span>
                 </label>
               </div>
@@ -188,18 +190,18 @@
             <!-- Lugar + Horario -->
             <div class="grid md:grid-cols-2 gap-6">
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Lugar</label>
-                <input type="text" name="ambLugar" class="input-field" placeholder="Ej. Salón Los Arcos, Palermo..."/>
+                <label for="ambLugar" class="block text-sm font-medium text-on-surface-variant">Lugar</label>
+                <input id="ambLugar" type="text" name="ambLugar" autocomplete="off" class="input-field" placeholder="Ej. Salón Los Arcos, Palermo..."/>
               </div>
               <div class="space-y-2">
-                <label class="block text-sm font-medium text-on-surface-variant">Horario</label>
-                <input type="text" name="ambHorario" class="input-field" placeholder="Ej. 18:00 hs"/>
+                <label for="ambHorario" class="block text-sm font-medium text-on-surface-variant">Horario</label>
+                <input id="ambHorario" type="text" name="ambHorario" autocomplete="off" class="input-field" placeholder="Ej. 18:00 hs"/>
               </div>
             </div>
 
             <!-- Archivo de diseño -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-on-surface-variant">Archivo de diseño (PDF o imagen)</label>
+              <label for="ambFile" class="block text-sm font-medium text-on-surface-variant">Archivo de diseño (PDF o imagen)</label>
               <input type="file" name="ambFile" id="ambFile" accept=".pdf,image/*" class="input-field p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-container file:text-on-primary-container hover:file:bg-primary/20"/>
               <p class="text-xs text-on-surface-variant/70">Seleccioná un archivo para subir (recomendado: PDF o JPG, máx 5MB).</p>
             </div>
@@ -207,8 +209,8 @@
 
           <!-- Additional Notes -->
           <div class="space-y-4 pt-4">
-            <label class="block text-sm font-medium text-on-surface-variant">Notas Adicionales (Temática, Colores, Explicaciones específicas)</label>
-            <textarea rows="3" name="notasAdicionales" class="input-field resize-none" placeholder="Contanos qué ideas tenés (colores, sabores, temáticas especiales)..."></textarea>
+            <label for="notasAdicionales" class="block text-sm font-medium text-on-surface-variant">Notas Adicionales (Temática, Colores, Explicaciones específicas)</label>
+            <textarea id="notasAdicionales" rows="3" name="notasAdicionales" class="input-field resize-none" placeholder="Contanos qué ideas tenés (colores, sabores, temáticas especiales)..."></textarea>
           </div>
 
           <!-- Error Message -->

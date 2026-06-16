@@ -1,25 +1,28 @@
 /* ===== Contact Form Logic ===== */
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5KG5c0oSpY2rgdW51W1UvUUi5EsoxdR9tse8yr4FNuUukXlp6l7JsO3s9MO7oBCFgMw/exec';
+const PASSWORD_HASH = '3fad64aabfe427ba97c943c6ce0ca094d65c07ce6c18cb187306089c30dee8ea';
+const MAX_FILE_BYTES = 5 * 1024 * 1024;
 
 // ─── Product Configuration ────────────────────────────────────────────────────
 // tipo: undefined = estándar | 'torta' | 'sabores' | 'sabor_simple'
-// deco: true = mostrar campo de deco (todos menos Macarrons)
+// deco: true = mostrar campo de deco (todos menos Macarons)
 // diametro: true = mostrar campo diámetro/tamaño (solo Matilda)
+// medidaCm: true = mostrar campo editable de medida en cm
 const PRODUCTOS_CONFIG = [
   { name: "Cookies", deco: true },
   { name: "Alfajorcitos", deco: true },
   { name: "Cakepops", deco: true },
   { name: "Icepops", deco: true },
   { name: "Oreos", deco: true },
-  { name: "Macarrons", deco: false },
+  { name: "Macarons", deco: false },
   { name: "Muffins con Buttercream", deco: true },
   { name: "Muffins Deco", deco: true },
   {
     name: "Mini Shots",
     deco: true,
     tipo: 'sabores',
-    sabores: ["Frutos rojos", "Limón", "Maracuyá", "Mouse de chocolate", "Tiramisú"]
+    sabores: ["Frutos rojos", "Limón", "Maracuyá", "Mousse de chocolate", "Tiramisú"]
   },
   {
     name: "Bocaditos",
@@ -32,11 +35,13 @@ const PRODUCTOS_CONFIG = [
   { name: "Torta 18cm 25 porciones", deco: true, tipo: 'torta' },
   { name: "Torta 18cm 35 porciones", deco: true, tipo: 'torta' },
   { name: "Torta 18cm 12 porciones", deco: true, tipo: 'torta' },
-  { name: "Torta Corazon", deco: true, tipo: 'torta' },
+  { name: "Torta de 22 cm", deco: true, tipo: 'torta' },
+  { name: "Torta Corazón", deco: true, tipo: 'torta' },
+  { name: "Torta Rectangular", deco: true, tipo: 'torta', medidaCm: true },
   { name: "Tortas Dobles", deco: true, tipo: 'torta' },
   { name: "Matilda", deco: true, tipo: 'torta', diametro: true },
   { name: "Rogel", deco: true },
-  { name: "Cheescake", deco: true, tipo: 'sabor_simple' },
+  { name: "Cheesecake", deco: true, tipo: 'sabor_simple' },
 ];
 
 // ─── State ────────────────────────────────────────────────────────────────────
@@ -62,6 +67,9 @@ function initState() {
     }
     if (cfg.diametro) {
       s.diametro = '';
+    }
+    if (cfg.medidaCm) {
+      s.medidaCm = '';
     }
     pedidoGrid[cfg.name] = s;
   });
@@ -90,10 +98,10 @@ function buildCardHTML(cfg) {
         <div class="flex items-center gap-2">
           <span class="text-xs text-on-surface-variant flex-1 leading-tight">${sabor}</span>
           <div class="flex items-center gap-1 shrink-0">
-            <button type="button" class="qty-btn qty-minus" data-product="${p}" data-sabor="${sabor}" data-action="minus-sabor">−</button>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
-                   class="qty-input !w-10 text-center" data-product="${p}" data-sabor="${sabor}" data-field="sabor-qty"/>
-            <button type="button" class="qty-btn qty-plus" data-product="${p}" data-sabor="${sabor}" data-action="plus-sabor">+</button>
+            <button type="button" class="qty-btn qty-minus" aria-label="Restar ${sabor} de ${p}" data-product="${p}" data-sabor="${sabor}" data-action="minus-sabor">−</button>
+            <input type="number" min="0" step="1" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
+                   aria-label="Cantidad de ${sabor} de ${p}" class="qty-input !w-10 text-center" data-product="${p}" data-sabor="${sabor}" data-field="sabor-qty"/>
+            <button type="button" class="qty-btn qty-plus" aria-label="Sumar ${sabor} de ${p}" data-product="${p}" data-sabor="${sabor}" data-action="plus-sabor">+</button>
           </div>
         </div>`;
     });
@@ -103,10 +111,10 @@ function buildCardHTML(cfg) {
       <div class="flex justify-between items-center">
         <span class="font-medium text-on-surface text-sm flex-1 pr-2 leading-tight">${p}</span>
         <div class="flex items-center gap-2 shrink-0">
-          <button type="button" class="qty-btn qty-minus" data-product="${p}" data-action="minus">−</button>
-          <input type="text" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
-                 class="qty-input" data-product="${p}" data-field="cantidad"/>
-          <button type="button" class="qty-btn qty-plus" data-product="${p}" data-action="plus">+</button>
+          <button type="button" class="qty-btn qty-minus" aria-label="Restar ${p}" data-product="${p}" data-action="minus">−</button>
+          <input type="number" min="0" step="1" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
+                 aria-label="Cantidad de ${p}" class="qty-input" data-product="${p}" data-field="cantidad"/>
+          <button type="button" class="qty-btn qty-plus" aria-label="Sumar ${p}" data-product="${p}" data-action="plus">+</button>
         </div>
       </div>`;
   }
@@ -117,7 +125,7 @@ function buildCardHTML(cfg) {
       <div class="torta-extras hidden mt-3 pt-3 border-t border-outline-variant/20 space-y-3">
         <div>
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Cobertura</label>
-          <select class="input-field !text-xs !py-2" data-product="${p}" data-field="cobertura">
+          <select class="input-field !text-xs !py-2" aria-label="Cobertura de ${p}" data-product="${p}" data-field="cobertura">
             <option value="" disabled selected>Seleccionar...</option>
             <option value="Buttercream">Buttercream</option>
             <option value="Forrado">Forrado</option>
@@ -125,7 +133,7 @@ function buildCardHTML(cfg) {
         </div>
         <div>
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Sabor (bizcochuelo)</label>
-          <select class="input-field !text-xs !py-2" data-product="${p}" data-field="sabor">
+          <select class="input-field !text-xs !py-2" aria-label="Sabor de ${p}" data-product="${p}" data-field="sabor">
             <option value="" disabled selected>Seleccionar...</option>
             <option value="Vainilla">Vainilla</option>
             <option value="Chocolate">Chocolate</option>
@@ -133,14 +141,20 @@ function buildCardHTML(cfg) {
         </div>
         <div>
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Rellenos</label>
-          <input type="text" class="input-field !text-xs !py-2" placeholder="Ej: dulce de leche, frutos rojos..."
+          <input type="text" class="input-field !text-xs !py-2" aria-label="Rellenos de ${p}" placeholder="Ej: dulce de leche, frutos rojos..."
                  data-product="${p}" data-field="rellenos"/>
         </div>
         ${cfg.diametro ? `
         <div>
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Diámetro / Tamaño</label>
-          <input type="text" class="input-field !text-xs !py-2" placeholder="Ej: 20cm, 6 porciones..."
+          <input type="text" class="input-field !text-xs !py-2" aria-label="Diámetro o tamaño de ${p}" placeholder="Ej: 20cm, 6 porciones..."
                  data-product="${p}" data-field="diametro"/>
+        </div>` : ''}
+        ${cfg.medidaCm ? `
+        <div>
+          <label class="block text-xs font-medium text-on-surface-variant mb-1">Medida en cm</label>
+          <input type="text" class="input-field !text-xs !py-2" aria-label="Medida en cm de ${p}" placeholder="Ej: 22 cm"
+                 data-product="${p}" data-field="medidaCm"/>
         </div>` : ''}
       </div>`;
   }
@@ -150,7 +164,7 @@ function buildCardHTML(cfg) {
     html += `
       <div class="sabor-extra hidden mt-3 pt-3 border-t border-outline-variant/20">
         <label class="block text-xs font-medium text-on-surface-variant mb-1">Sabor</label>
-        <select class="input-field !text-xs !py-2" data-product="${p}" data-field="sabor">
+        <select class="input-field !text-xs !py-2" aria-label="Sabor de ${p}" data-product="${p}" data-field="sabor">
           <option value="" disabled selected>Seleccionar...</option>
           <option value="Vainilla">Vainilla</option>
           <option value="Chocolate">Chocolate</option>
@@ -158,11 +172,11 @@ function buildCardHTML(cfg) {
       </div>`;
   }
 
-  // ── Deco field (all except Macarrons) ──
+  // ── Deco field (all except Macarons) ──
   if (cfg.deco) {
     html += `
       <div class="mt-3">
-        <input type="text" class="input-field !text-xs !py-2" placeholder="✏️ Deco / Temática..."
+        <input type="text" class="input-field !text-xs !py-2" aria-label="Deco o temática de ${p}" placeholder="✏️ Deco / Temática..."
                data-product="${p}" data-field="deco"/>
       </div>`;
   }
@@ -184,13 +198,21 @@ function buildProductGrid() {
   });
 
   // ── Event delegation ──
+  bindProductGridEvents(container);
+}
+
+function bindProductGridEvents(container) {
+  if (container.dataset.eventsBound === 'true') return;
+  container.dataset.eventsBound = 'true';
+
   container.addEventListener('click', e => {
     const btn = e.target.closest('[data-action]');
-    if (!btn) return;
+    if (!btn || !container.contains(btn)) return;
 
     const p = btn.dataset.product;
     const action = btn.dataset.action;
     const cfg = PRODUCTOS_CONFIG.find(c => c.name === p);
+    if (!cfg) return;
 
     if (action === 'plus-sabor' || action === 'minus-sabor') {
       const sabor = btn.dataset.sabor;
@@ -215,7 +237,7 @@ function buildProductGrid() {
     } else if (field === 'sabor-qty') {
       const v = parseInt(e.target.value, 10);
       updateSaborQty(cfg, sabor, isNaN(v) ? 0 : Math.max(0, v));
-    } else if (['cobertura', 'sabor', 'rellenos', 'diametro', 'deco'].includes(field)) {
+    } else if (['cobertura', 'sabor', 'rellenos', 'diametro', 'medidaCm', 'deco'].includes(field)) {
       pedidoGrid[p][field] = e.target.value;
     }
   });
@@ -260,6 +282,14 @@ function updateSaborQty(cfg, sabor, newVal) {
   card.classList.toggle('selected', total > 0);
 }
 
+async function sha256Hex(value) {
+  const data = new TextEncoder().encode(value);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(byte => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
 // ─── Password Gate ────────────────────────────────────────────────────────────
 function setupPasswordGate() {
   const gate = document.getElementById('password-gate');
@@ -272,10 +302,13 @@ function setupPasswordGate() {
     return;
   }
 
-  const attempt = () => {
+  const attempt = async () => {
     const password = passwordInput.value;
     if (!password) return;
-    if (password === 'macarons2024') {
+    passwordError.classList.add('hidden');
+
+    const hash = await sha256Hex(password);
+    if (hash === PASSWORD_HASH) {
       sessionStorage.setItem('picki_auth', 'true');
       gate.classList.add('hidden');
     } else {
@@ -342,6 +375,7 @@ async function handleSubmit(e) {
           if (s.sabor) line += ` | Sabor: ${s.sabor}`;
           if (s.rellenos) line += ` | Rellenos: ${s.rellenos}`;
           if (cfg.diametro && s.diametro) line += ` | Tamaño: ${s.diametro}`;
+          if (cfg.medidaCm && s.medidaCm) line += ` | Medida: ${s.medidaCm}`;
         }
         if (cfg.tipo === 'sabor_simple' && s.sabor) line += ` | Sabor: ${s.sabor}`;
         if (s.deco) line += ` | Deco: ${s.deco}`;
@@ -357,6 +391,9 @@ async function handleSubmit(e) {
 
     if (fileInput && fileInput.files.length > 0) {
       const file = fileInput.files[0];
+      if (file.size > MAX_FILE_BYTES) {
+        throw new Error('El archivo no puede superar los 5MB.');
+      }
       fileName = file.name;
       fileType = file.type;
       fileData = await readFileAsBase64(file);
@@ -408,7 +445,7 @@ async function handleSubmit(e) {
     successEl.classList.remove('hidden');
 
   } catch (err) {
-    errorEl.textContent = 'No se pudo enviar el mensaje. Por favor intentá de nuevo.';
+    errorEl.textContent = err.message || 'No se pudo enviar el mensaje. Por favor intentá de nuevo.';
     errorEl.classList.remove('hidden');
   } finally {
     submitBtn.disabled = false;
@@ -441,5 +478,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupPasswordGate();
   initState();
   buildProductGrid();
+  document.getElementById('reset-form-btn')?.addEventListener('click', resetForm);
   document.getElementById('contact-form').addEventListener('submit', handleSubmit);
 });

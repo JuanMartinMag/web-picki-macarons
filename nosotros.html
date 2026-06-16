@@ -7,6 +7,12 @@
   <title>Nosotras — Picki Macarons</title>
   <meta name="description"
     content="Conocé la historia detrás de Picki Macarons. Pastelería artesanal hecha con amor, pensando en vos." />
+  <link rel="canonical" href="https://picki.com.ar/nosotros.html" />
+  <meta property="og:title" content="Nosotras — Picki Macarons" />
+  <meta property="og:description" content="Conocé la historia detrás de Picki Macarons y nuestra pastelería artesanal personalizada." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://picki.com.ar/nosotros.html" />
+  <meta property="og:image" content="https://picki.com.ar/images/imagen-home-pickis.webp" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -126,8 +132,12 @@
           <div
             class="absolute inset-0 bg-primary-container/40 rounded-full blur-3xl -z-10 translate-x-6 translate-y-6">
           </div>
-          <img src="images/imagen-home-pickis.png" alt="Picki Macarons artesanales"
-            class="w-full h-full object-cover object-[75%_25%] rounded-xl editorial-shadow" loading="lazy" />
+          <picture class="block w-full h-full">
+            <source srcset="images/imagen-home-pickis.webp" type="image/webp" />
+            <img src="images/imagen-home-pickis.png" alt="Picki Macarons artesanales"
+              width="2816" height="1536"
+              class="w-full h-full object-cover object-[75%_25%] rounded-xl editorial-shadow" loading="lazy" />
+          </picture>
         </div>
         <!-- Text -->
         <div class="animate-on-scroll delay-1">
@@ -194,7 +204,7 @@
           ¿Querés que tu próximo evento<br />tenga el toque Picki?
         </h2>
         <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
-          class="inline-block bg-[#d4a5a5] text-white px-10 py-4 rounded-full font-bold text-lg editorial-shadow uppercase tracking-widest btn-animate">
+          class="inline-block bg-primary text-white px-10 py-4 rounded-full font-bold text-lg editorial-shadow uppercase tracking-widest btn-animate">
           Escribinos
         </a>
       </div>
@@ -213,6 +223,7 @@
       </div>
       <div class="flex gap-8 items-center">
         <a href="https://www.instagram.com/pickimacarons/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram de Picki Macarons"
           class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -222,6 +233,7 @@
           </svg>
         </a>
         <a href="https://wa.me/5491123486139" target="_blank" rel="noopener noreferrer"
+          aria-label="WhatsApp de Picki Macarons"
           class="text-on-surface-variant hover:text-primary transition-colors hover:scale-110 duration-300 inline-block">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -229,9 +241,9 @@
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
           </svg>
         </a>
-        <a href="#"
+        <a href="privacidad.html"
           class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Privacidad</a>
-        <a href="#"
+        <a href="terminos.html"
           class="font-body text-xs tracking-widest uppercase text-on-surface-variant hover:text-primary transition-all duration-300 hover:underline decoration-primary-container underline-offset-4">Términos</a>
       </div>
     </div>

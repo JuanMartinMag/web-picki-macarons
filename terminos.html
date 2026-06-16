@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos — Picki Macarons</title>
+  <meta name="description" content="Términos y condiciones de Picki Macarons." />
+  <link rel="canonical" href="https://picki.com.ar/terminos.html" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7b5455",
+            "surface": "#fdf9f5",
+            "on-surface": "#1c1c19",
+            "surface-container-low": "#f7f3ef",
+            "on-surface-variant": "#504444",
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"],
+          },
+          borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-surface font-body text-on-surface">
+  <nav class="fixed top-0 w-full z-50 bg-[#fdf9f5]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(28,28,25,0.06)] animate-header">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
+      <a href="index.html" class="text-2xl font-bold font-headline text-primary tracking-tight">Picki Macarons</a>
+      <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors font-headline italic text-lg">Volver</a>
+    </div>
+  </nav>
+
+  <main class="pt-32 px-8 pb-20">
+    <article class="max-w-3xl mx-auto bg-surface-container-low rounded-lg editorial-shadow p-8 md:p-12">
+      <h1 class="font-headline italic text-4xl md:text-5xl text-primary mb-8">Términos y condiciones</h1>
+      <div class="space-y-5 text-on-surface-variant leading-relaxed">
+        <p>Los pedidos y ambientaciones de Picki Macarons son personalizados y se coordinan de forma individual según disponibilidad, fecha, diseño y alcance.</p>
+        <p>Los presupuestos pueden variar según cantidades, complejidad, insumos, traslado y requerimientos especiales del evento.</p>
+        <p>Las señas, cancelaciones, cambios de fecha y condiciones de entrega se informan al momento de confirmar cada pedido.</p>
+        <p>Las imágenes del sitio son orientativas. Cada producto artesanal puede presentar pequeñas variaciones de color, tamaño o terminación.</p>
+      </div>
+    </article>
+  </main>
+</body>
+
+</html>

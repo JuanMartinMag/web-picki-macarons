@@ -77,6 +77,10 @@ html {
   transform: scale(1.1);
 }
 
+picture {
+  display: block;
+}
+
 /* ===== Button hover micro-interaction ===== */
 .btn-animate {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -159,6 +163,10 @@ html {
 /* Quantity input */
 .qty-input {
   width: 3rem;
+  height: 2rem !important;
+  padding: 0 !important;
+  line-height: 2rem !important;
+  box-sizing: border-box;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -167,7 +175,13 @@ html {
   border: none;
   border-bottom: 2px solid transparent;
   outline: none;
+  appearance: textfield !important;
   transition: border-color 0.2s;
+}
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
 }
 .qty-input:focus {
   border-bottom-color: #7b5455;
