@@ -99,7 +99,7 @@ function buildCardHTML(cfg) {
           <span class="text-xs text-on-surface-variant flex-1 leading-tight">${sabor}</span>
           <div class="flex items-center gap-1 shrink-0">
             <button type="button" class="qty-btn qty-minus" aria-label="Restar ${sabor} de ${p}" data-product="${p}" data-sabor="${sabor}" data-action="minus-sabor">−</button>
-            <input type="number" min="0" step="1" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
+            <input type="text" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
                    aria-label="Cantidad de ${sabor} de ${p}" class="qty-input !w-10 text-center" data-product="${p}" data-sabor="${sabor}" data-field="sabor-qty"/>
             <button type="button" class="qty-btn qty-plus" aria-label="Sumar ${sabor} de ${p}" data-product="${p}" data-sabor="${sabor}" data-action="plus-sabor">+</button>
           </div>
@@ -112,7 +112,7 @@ function buildCardHTML(cfg) {
         <span class="font-medium text-on-surface text-sm flex-1 pr-2 leading-tight">${p}</span>
         <div class="flex items-center gap-2 shrink-0">
           <button type="button" class="qty-btn qty-minus" aria-label="Restar ${p}" data-product="${p}" data-action="minus">−</button>
-          <input type="number" min="0" step="1" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
+          <input type="text" inputmode="numeric" pattern="[0-9]*" value="" placeholder="0"
                  aria-label="Cantidad de ${p}" class="qty-input" data-product="${p}" data-field="cantidad"/>
           <button type="button" class="qty-btn qty-plus" aria-label="Sumar ${p}" data-product="${p}" data-action="plus">+</button>
         </div>

@@ -167,6 +167,7 @@ picture {
   padding: 0 !important;
   line-height: 2rem !important;
   box-sizing: border-box;
+  display: inline-block;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -175,13 +176,11 @@ picture {
   border: none;
   border-bottom: 2px solid transparent;
   outline: none;
-  appearance: textfield !important;
   transition: border-color 0.2s;
 }
-.qty-input::-webkit-outer-spin-button,
-.qty-input::-webkit-inner-spin-button {
-  margin: 0;
-  appearance: none;
+.qty-input::placeholder {
+  color: #1c1c19;
+  opacity: 1;
 }
 .qty-input:focus {
   border-bottom-color: #7b5455;
